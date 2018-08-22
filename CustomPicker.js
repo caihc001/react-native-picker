@@ -24,6 +24,10 @@ export default class CustomPicker extends BaseDialog {
 
     constructor(props) {
         super(props);
+        this.state = {
+            value1: this.props.list[0],
+            value2: this.props.list1[0],
+        };
     }
 
     _getContentPosition() {
@@ -37,7 +41,7 @@ export default class CustomPicker extends BaseDialog {
             <PickerView
                 list={this.props.list}
                 onPickerSelected={(toValue) => {
-                    // console.warn(toValue)
+                    this.setState({value1:toValue})
                 }}
                 selectedIndex={0}
                 fontSize={this.getSize(14)}
@@ -46,12 +50,13 @@ export default class CustomPicker extends BaseDialog {
             <PickerView
                 list={this.props.list1}
                 onPickerSelected={(toValue) => {
-                    // console.warn(toValue)
+                    this.setState({value2:toValue})
                 }}
                 selectedIndex={0}
                 fontSize={this.getSize(14)}
                 itemWidth={this.mScreenWidth / 2}
                 itemHeight={this.getSize(40)} />
+            
         </View>
     }
 
