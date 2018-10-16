@@ -6,7 +6,8 @@ import {
     Text,
     Animated,
     TouchableOpacity,
-    FlatList
+    FlatList,
+    ScrollView
 } from 'react-native';
 
 import BaseDialog from './BaseDialog';
@@ -68,10 +69,10 @@ class SimpleItemsDialog extends BaseDialog {
     }
 
     renderContent() {
-        return <View style={{ width: this.mScreenWidth, backgroundColor: '#ffffff' }}>
+        return <ScrollView style={{ width: this.mScreenWidth, backgroundColor: '#ffffff' }}>
             {this.renderItems()}
             {this.props.cancel ? this.renderCancel() : null}
-        </View>
+        </ScrollView>
     }
 }
 
