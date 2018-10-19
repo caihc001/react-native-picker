@@ -7,7 +7,7 @@ import {
     Animated,
     TouchableOpacity,
     FlatList,
-    ScrollView
+    ScrollView,
 } from 'react-native';
 
 import BaseDialog from './BaseDialog';
@@ -52,7 +52,7 @@ class SimpleItemsDialog extends BaseDialog {
                     });
                 }}
                 key={index}
-                style={{ width: this.mScreenWidth, height: this.getSize(49), justifyContent: 'center', alignItems: 'center' }}>
+                style={{ width: this.mScreenWidth, height: 40, justifyContent: 'center', alignItems: 'center' }}>
                 <Text style={this.props.itemStyle}>{typeof item == 'string' ? item : item[this.props.itemKey]}</Text>
                 <View style={{ position: 'absolute', bottom: 0, width: this.mScreenWidth, height: this.mOnePixel, backgroundColor: '#E8EEF0' }} />
             </TouchableOpacity>
@@ -62,17 +62,21 @@ class SimpleItemsDialog extends BaseDialog {
     renderCancel() {
         return <TouchableOpacity
             onPress={() => this.dismiss()}
-            style={{ width: this.mScreenWidth, height: this.getSize(49), justifyContent: 'center', alignItems: 'center' }}>
+            style={{ width: this.mScreenWidth, height: 30, justifyContent: 'center', alignItems: 'center' }}>
             <Text style={this.props.cancelTextStyle}>{this.props.cancelText}</Text>
             <View style={{ position: 'absolute', bottom: 0, width: this.mScreenWidth, height: this.mOnePixel, backgroundColor: '#E8EEF0' }} />
         </TouchableOpacity>
     }
 
     renderContent() {
-        return <ScrollView style={{ width: this.mScreenWidth, backgroundColor: '#ffffff' }}>
-            {this.renderItems()}
-            {this.props.cancel ? this.renderCancel() : null}
-        </ScrollView>
+        return (
+            <View style={{height:150}}>
+                <ScrollView style={{width: this.mScreenWidth, backgroundColor: '#ffffff' }}>
+                    {this.renderItems()}
+                    {this.props.cancel ? this.renderCancel() : null}
+                </ScrollView>
+            </View>
+        )
     }
 }
 
